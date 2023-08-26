@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import { useEffect, useState } from "react";
-import config from "./config";
+import { config } from "./configs/phaser";
 
 const usePhaserWrapper = () => {
   const [game, setGame] = useState();

@@ -1,6 +1,6 @@
-import Game from "./scenes/Game";
+import Game from "../scenes/Game";
 
-const config = {
+export const config = {
   width: 640,
   height: 480,
   parent: "mario",
@@ -19,5 +19,3 @@ const config = {
   },
   scene: [Game],
 };
-
-export default config;

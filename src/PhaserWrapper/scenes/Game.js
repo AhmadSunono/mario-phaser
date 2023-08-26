@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import Player from "../objects/Player";
-
+import { animations as generateAnimations } from "../configs/animations";
 class Game extends Phaser.Scene {
   constructor() {
     super("Game");
@@ -19,6 +19,11 @@ class Game extends Phaser.Scene {
       "assets/img/mario-atlas.png",
       "assets/json/mario-atlas.json"
     );
+
+    // Register animations
+    this.load.on("complete", () => {
+      generateAnimations(this);
+    });
   }
 
   create() {
