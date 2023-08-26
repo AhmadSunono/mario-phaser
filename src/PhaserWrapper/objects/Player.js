@@ -18,6 +18,12 @@ class Player {
       this.sprite,
       this.scene.platform
     );
+
+    // Everything that falls inside the dead zone will be followed
+    scene.cameras.main.setDeadzone(
+      scene.game.config.width / 4,
+      scene.game.config.height
+    );
   }
 
   update(input) {
@@ -41,10 +47,6 @@ class Player {
     }
 
     this.animate(input);
-
-    // this.sprite.body.onFloor() && this.sprite.play("idle", true);
-    // this.sprite.body.onFloor() && this.sprite.play("run", true);
-    // this.sprite.play("jump", true);
   }
 
   animate(input) {
