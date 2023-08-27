@@ -1,15 +1,16 @@
 import React from "react";
 import usePhaserWrapper from "./usePhaserWrapper";
+import "./styles.css";
 
 const PhaserWrapper = () => {
-  usePhaserWrapper();
+  const { score } = usePhaserWrapper();
 
   return (
     <div id="mario">
       <div className="score">
-        Score: <span className="score-amount">0</span>
+        Score: <span className="score-amount">{score}</span>
       </div>
-      <div className="game-over">Game Over</div>
+      {/* <div className="game-over">Game Over</div> */}
     </div>
   );
 };
