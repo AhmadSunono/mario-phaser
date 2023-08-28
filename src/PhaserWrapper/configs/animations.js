@@ -44,4 +44,22 @@ export const animations = (scene) => {
     frameRate: 10,
     repeat: -1,
   });
+
+  scene.anims.create({
+    key: "goombaRun",
+    frames: scene.anims.generateFrameNames("atlas", {
+      prefix: "mario-atlas_",
+      start: 11,
+      end: 12,
+    }),
+    frameRate: 15,
+    repeat: -1,
+  });
+
+  scene.anims.create({
+    key: "goombaDie",
+    frames: [{ key: "atlas", frame: "mario-atlas_10" }],
+    frameRate: 10,
+    hideOnComplete: true,
+  });
 };

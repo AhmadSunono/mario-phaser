@@ -1,9 +1,10 @@
 import Phaser from "phaser";
-import Player from "../objects/Player";
+import { INCREASE_SCORE_EVENT } from "../../constants/events";
+import Emitter from "../../services/eventEmitter";
 import { animations as generateAnimations } from "../configs/animations";
 import Coin from "../objects/Coin";
-import Emitter from "../../services/eventEmitter";
-import { INCREASE_SCORE_EVENT } from "../../constants/events";
+import Goomba from "../objects/Goomba";
+import Player from "../objects/Player";
 class Game extends Phaser.Scene {
   constructor() {
     super("Game");
@@ -47,6 +48,9 @@ class Game extends Phaser.Scene {
     // Add coins
     this.coins = new Coin(this);
 
+    // Add goombas
+    this.goombas = new Goomba(this);
+
     // Initialize inputs to track keys
     this.inputs = this.input.keyboard.createCursorKeys();
   }
@@ -54,6 +58,7 @@ class Game extends Phaser.Scene {
   update() {
     this.player.update(this.inputs);
     this.coins.update();
+    this.goombas.update();
   }
 
   increaseScore() {
