@@ -5,6 +5,15 @@ import { animations as generateAnimations } from "../configs/animations";
 import Coin from "../objects/Coin";
 import Goomba from "../objects/Goomba";
 import Player from "../objects/Player";
+import Flag from "../objects/Flag";
+
+const tiles = {
+  EMPTY: -1,
+  FLAG_LEFT: 450,
+};
+
+const noCollisionTiles = [tiles.EMPTY, tiles.FLAG_LEFT];
+
 class Game extends Phaser.Scene {
   constructor() {
     super("Game");
@@ -40,7 +49,7 @@ class Game extends Phaser.Scene {
     this.map.createStaticLayer("background", this.tileset, 0, 0);
 
     // Activate collisions
-    this.platform.setCollisionByExclusion(-1, true);
+    this.platform.setCollisionByExclusion(noCollisionTiles, true);
 
     // Add player
     this.player = new Player(this, 25, 400);
@@ -53,6 +62,9 @@ class Game extends Phaser.Scene {
 
     // Initialize inputs to track keys
     this.inputs = this.input.keyboard.createCursorKeys();
+
+    // Add winning flag
+    this.flag = new Flag(this);
   }
 
   update() {
