@@ -1,4 +1,5 @@
 import Game from "../scenes/Game";
+import GameOver from "../scenes/GameOver";
 
 export const config = {
   width: 640,
@@ -17,5 +18,5 @@ export const config = {
       },
     },
   },
-  scene: [Game],
+  scene: [Game, GameOver],
 };

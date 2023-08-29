@@ -4,6 +4,7 @@ class Player {
 
     this.sprite = this.scene.physics.add.sprite(x, y, "atlas").setScale(2);
     this.sprite.setCollideWorldBounds(true);
+    this.sprite.isDead = false;
 
     this.scene.cameras.main
       .setBounds(
@@ -57,10 +58,10 @@ class Player {
     if (up.isDown) {
       sprite.play("jump", true);
     } else if (left.isDown || right.isDown) {
-      if (isOnFloor) {
+      if (isOnFloor && !this.sprite.isDead) {
         sprite.play("run", true);
       }
-    } else if (isOnFloor) {
+    } else if (isOnFloor && !this.sprite.isDead) {
       sprite.play("idle", true);
     }
   }
@@ -80,6 +81,13 @@ class Player {
     ) {
       this.scene.cameras.main.startFollow(this.sprite);
     }
+  }
+
+  die() {
+    this.sprite.isDead = true;
+    this.sprite.setVelocity(0, -350);
+    this.sprite.play("die", true);
+    this.sprite.setCollideWorldBounds(false);
   }
 }
 

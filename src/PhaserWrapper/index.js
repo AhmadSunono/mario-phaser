@@ -10,7 +10,7 @@ const PhaserWrapper = () => {
       <div className="score">
         Score: <span className="score-amount">{score}</span>
       </div>
-      {/* <div className="game-over">Game Over</div> */}
+      <div className="game-over">Game Over</div>
     </div>
   );
 };

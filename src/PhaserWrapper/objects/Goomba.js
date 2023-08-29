@@ -62,6 +62,15 @@ class Goomba {
     }
 
     // Game Over
+    this.scene.player.die();
+    this.scene.input.keyboard.shutdown();
+
+    this.scene.physics.world.removeCollider(this.scene.player.collider);
+    this.scene.physics.world.removeCollider(this.collider);
+
+    setTimeout(() => {
+      this.scene.scene.start("GameOver");
+    }, 1500);
   }
 
   killGoomba() {
